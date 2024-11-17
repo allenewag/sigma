@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Go Out With Me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            background-image: url(https://www.cakesandbakes.in/stories/wp-content/uploads/2024/06/rose.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff4b2b;
+        }
+        .buttons {
+            margin-top: 2rem;
+        }
+        button {
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        #yesBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        #heart {
+            font-size: 3rem;
+            color: #ff4b2b;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="question">Will you go out with me?</h1>
+        <div class="buttons">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+        <div id="heart">❤️</div>
+    </div>
+
+    <script>
+        const question = document.getElementById('question');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const heart = document.getElementById('heart');
+
+        const noPhrases = [
+            "Are you sure?",
+            "Really sure?",
+            "Pag isipan mo ng mabuti",
+            "OH NO",
+            "Sad nako",
+            "it's joever",
+            "wag malulungkot ako",
+            "iiyak ako",
+            "give me a chance",
+            "lumbay nako oh",
+            "Don't be so cold!",
+            "Change of heart?",
+            "Wouldn't you reconsider?",
+            "Is that your final answer?",
+            "You're breaking my heart ;("
+        ];
+
+        let noCount = 0;
+
+        yesBtn.addEventListener('click', () => {
+            question.textContent = "See you tommorow ate ko";
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+            heart.style.fontSize = '5rem';
+        });
+
+        noBtn.addEventListener('click', () => {
+            noCount++;
+            if (noCount < noPhrases.length) {
+                noBtn.textContent = noPhrases[noCount];
+            } else {
+                noBtn.textContent = "Okay, I'll stop asking...";
+                noBtn.disabled = true;
+            }
+            yesBtn.style.fontSize = `${1.2 + noCount * 0.1}rem`;
+            noBtn.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+        });
+
+        noBtn.addEventListener('mouseover', () => {
+            if (noCount < noPhrases.length) {
+                noBtn.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+            }
+        });
+    </script>
+</body>
+</html>s
